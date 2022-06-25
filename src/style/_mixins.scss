@@ -1,0 +1,39 @@
+@mixin strict_size($height, $width) {
+  @if $height {
+    height: #{$height};
+    min-height: #{$height};
+    max-height: #{$height};
+  }
+
+  @if $width {
+    width: #{$width};
+    min-width: #{$width};
+    max-width: #{$width};
+  }
+}
+
+@mixin rotate_element {
+  // ! NEED THE ELEMENT TO FACE LEFT
+
+  &.top-left {
+    transform: rotate(45deg);
+  }
+  &.top {
+    transform: translateY(-50%) rotate(90deg);
+  }
+  &.top-right {
+    transform: rotate(125deg);
+  }
+  &.right {
+    transform: rotate(180deg);
+  }
+  &.bottom-right {
+    transform: rotate(225deg);
+  }
+  &.bottom {
+    transform: translateY(-50%) rotate(270deg);
+  }
+  &.bottom-left {
+    transform: rotate(315deg);
+  }
+}

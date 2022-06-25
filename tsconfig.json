@@ -34,7 +34,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-  ],
+, "src/fire-torch-effect.js"  ],
   "exclude": [
     "node_modules"
   ]
