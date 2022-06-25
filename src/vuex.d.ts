@@ -5,6 +5,7 @@ import { BasketStore } from './interfaces/basket.interface';
 
 declare module '@vue/runtime-core' {
   interface State {
+    countOpenedModal: number;
     countGames: number;
   }
 

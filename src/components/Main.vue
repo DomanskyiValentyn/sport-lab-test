@@ -1,6 +1,19 @@
 <template>
   <Torch />
 
+  <Modal
+    v-if="modal.result && status"
+    class="status-try"
+    @close="modal.result = false"
+  >
+    <div class="status-try__content">
+      <span></span>
+      <h2 class="t-a-c" v-html="text[status]"></h2>
+
+      <button class="btn" @click="modal.result = false">Закрить</button>
+    </div>
+  </Modal>
+
   <main>
     <img class="logo" src="~@/assets/logo.png" alt="">
 
@@ -20,12 +33,15 @@
 import { Options, Vue } from 'vue-class-component';
 import { WatchStopHandle } from '@vue/runtime-core';
 
+import Modal from '@/components/base/Modal.vue';
+
 import Chest from '@/components/Chest.vue';
 import Torch from '@/components/Torch.vue';
 import Gnome from '@/components/Gnome.vue';
 
 @Options({
   components: {
+    Modal,
     Chest,
     Torch,
     Gnome,
@@ -41,10 +57,16 @@ export default class Main extends Vue {
 
   public chestOpen = -1;
 
+  public modal = {
+    result: false,
+  }
+
   private text = {
-    win: 'Поздравляем! Вы выиграли',
-    lose: 'Не повезло! Попробуйте еще раз',
+    win: 'Поздравляем! <br /> Вы выиграли.',
+    lose: 'Не повезло! <br /> Попробуйте еще раз.',
   };
+
+  public status: string | null = null;
 
   public play(): void {
     const rnd = Math.floor(Math.random() * 9);
@@ -52,7 +74,10 @@ export default class Main extends Vue {
     if (this.chestOpen === rnd) this.play();
     else {
       this.chestOpen = rnd;
-      setTimeout(() => { this.isEmpty ? alert(this.text.win) : alert(this.text.lose); }, 300);
+      setTimeout(() => {
+        this.isEmpty ? this.status = 'win' : this.status = 'lose';
+        this.modal.result = true;
+      }, 300);
     }
   }
 
@@ -109,6 +134,28 @@ main {
       left: auto;
       right: auto;
     };
+  }
+}
+</style>
+
+<style lang="scss">
+.status-try {
+  .modal__content {
+    width: 100%;
+    max-width: 630px;
+    height: 100%;
+    max-height: 340px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 100%;
+
+    padding: 40px 0;
   }
 }
 </style>

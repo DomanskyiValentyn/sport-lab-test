@@ -99,7 +99,7 @@ var DATOptions = function()
   this.ANGLE = -123.17124735729388;
   this.ANGLE_VARIANCE = 3;
   this.X_VARIANCE = 62.01550387596899;
-  this.Y_VARIANCE = 45.10218463706836;
+  this.Y_VARIANCE = 90.10218463706836;
   this.MAX_PARTICLES = 400;
   this.SPEED = 1.5;
   this.SPEED_VARIANCE = 1;
@@ -127,7 +127,7 @@ var DATOptions = function()
   this.END_COLOR_A_VARIANCE = 0;
   this.RADIAL_SHARPNESS = 65;
   this.RADIAL_SHARPNESS_VARIANCE = 0;
-  this.GRAVITY_X = -2.9386892177589843;
+  this.GRAVITY_X = -1;
   this.GRAVITY_Y = 0;
   this.RADIAL = true;
   this.BLEND_MODE = "lighter";
@@ -161,7 +161,7 @@ Scene.prototype.init = function(canvas_id) {
   this.canvas = document.getElementById(canvas_id);
 
   this.canvas.width = 300;
-  this.canvas.height = 300;
+  this.canvas.height = 400;
 
   this.width = this.canvas.width;
   this.height = this.canvas.height;

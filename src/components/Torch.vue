@@ -38,11 +38,11 @@ export default class Torch extends Vue {
 
   canvas {
     position: absolute;
-    top: 70px;
+    top: 20px;
     left: 0;
 
     width: 300px !important;
-    height: 190px !important;
+    height: 230px !important;
   }
 }
 </style>
